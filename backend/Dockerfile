@@ -6,7 +6,7 @@
 ARG GO_VERSION=1.24.4
 FROM golang:${GO_VERSION}-bookworm AS builder
 
-WORKDIR /app
+WORKDIR /backend
 
 COPY go.* .
 RUN go mod download
@@ -20,8 +20,8 @@ RUN go build -o main .
 # ===========================
 FROM debian:bookworm-slim
 
-COPY --from=builder /app/main /app/main
+COPY --from=builder /backend/main /backend/main
 
 EXPOSE 3000
 
-CMD ["/app/main"]
+CMD ["/backend/main"]
