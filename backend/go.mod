@@ -2,7 +2,10 @@ module github.com/mrtmyix/go-fiber-sample
 
 go 1.24.4
 
-require github.com/gofiber/fiber/v3 v3.0.0-beta.4
+require (
+	github.com/gofiber/fiber/v3 v3.0.0-beta.4
+	github.com/lib/pq v1.10.9
+)
 
 require (
 	github.com/andybalholm/brotli v1.1.1 // indirect
