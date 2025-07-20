@@ -20,12 +20,14 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", func(c fiber.Ctx) error {
-		var greeting string
-		err := db.QueryRow("SELECT 'Hello, World!'").Scan(&greeting)
+		user_name := ""
+
+		row := db.QueryRow("SELECT user_name FROM users WHERE user_id = $1", 1)
+		err := row.Scan(&user_name)
 		if err != nil {
 			return err
 		}
-		return c.SendString(greeting)
+		return c.SendString("User ID: " + user_name)
 	})
 
 	app.Listen(":3000")
