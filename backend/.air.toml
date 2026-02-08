@@ -1,0 +1,6 @@
+root = "."
+tmp_dir = "/tmp/air"
+
+[build]
+  cmd = "go build -o /tmp/air/main ."
+  bin = "/tmp/air/main"
